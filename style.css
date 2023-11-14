@@ -1,0 +1,108 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1b21;
+}
+
+main {
+  width: 26rem;
+  height: 30rem;
+  padding: 1.5rem;
+  background-color: #454546;
+}
+
+.calculator {
+  width: 100%;
+  height: 100%;
+  
+  display: grid;
+  grid-template: repeat(5,1fr) / repeat(4, 1fr);
+}
+
+.calculator > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  background-color: #202024;
+  color: gold;
+  font-size: 1.5rem;
+} 
+
+.calculator button:hover {
+  cursor: pointer; 
+}
+
+.calculator .result-screen {
+  grid-area: 1/1/2/4;
+  background-color: gray;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 2rem;
+}
+
+.symbol-plus {
+  grid-area: 2/4/3/5;
+}
+
+.symbol-minus {
+  grid-area: 3/4/3/5;
+}
+
+.symbol-multiply {
+  grid-area: 4/4/5/5;
+}
+
+.symbol-division {
+  grid-area: 5/4/6/5;
+}
