@@ -53,8 +53,8 @@ buttons.forEach(each => {
         if(clickedButton === 'AC'){
             userInput = '';
             result_screen.textContent = '0';
-        } else if(clickedButton === '=' && userInput){
-            userInput  = calculator.calculate(userInput);
+        } else if(clickedButton === '=' && !userLastInputIsNotANumber && userInput){
+            userInput = String(calculator.calculate(userInput));
             result_screen.textContent = userInput;
             userInput = '';
         } else if(((userInput && notANumber && !userLastInputIsNotANumber) || (!notANumber))) {
