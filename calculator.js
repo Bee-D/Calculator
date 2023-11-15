@@ -46,15 +46,20 @@ let calculator = new Calculator;
 
 buttons.forEach(each => {
     each.addEventListener('click', event => {
-        if(event.target.id === 'AC'){
+        let clickedButton = event.target.id; 
+        let userLastInput = userInput[userInput.length-1];
+        let notANumber = isNaN(+clickedButton);
+        let userLastInputIsNotANumber = isNaN(+userLastInput);
+        if(clickedButton === 'AC'){
             userInput = '';
             result_screen.textContent = '0';
-        } else if(event.target.id === '='){
-            userInput  = calculator.calculate(userInput)
+        } else if(clickedButton === '=' && userInput){
+            userInput  = calculator.calculate(userInput);
             result_screen.textContent = userInput;
-        } else {
-            userInput += event.target.id;
+            userInput = '';
+        } else if(((userInput && notANumber && !userLastInputIsNotANumber) || (!notANumber))) {
+            userInput += clickedButton;
             result_screen.textContent = userInput;
         }
-    });
+    }); 
 })
