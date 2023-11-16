@@ -16,11 +16,12 @@ function Calculator(){
 
         let total;
 
-        for(let i = 1; i < numbers.length; i++){
+        if(!operators.length){
+            total = numbers[0]
+            return total;
+        }
 
-            if(total == 'undefined'){
-                return numbers[0];
-            }
+        for(let i = 1; i < numbers.length; i++){
             
             if(isNaN(total)){
                 a = +numbers[0];
@@ -58,10 +59,9 @@ buttons.forEach(each => {
         if(clickedButton === 'AC'){
             userInput = '';
             result_screen.textContent = '0';
-        } else if((clickedButton === '=' && userInput.length > 3)){
+        } else if((clickedButton === '=' && userInput.length >= 3 && !userLastInputIsNotANumber)){
             userInput = String(calculator.calculate(userInput));
             result_screen.textContent = userInput;
-            userInput = '';
         } else if(((userInput && notANumber && !userLastInputIsNotANumber && clickedButton != '=') || (!notANumber))) {
             if(clickedButton == '.' && userInput[userInput.length-2] == '.'){
                 return;
