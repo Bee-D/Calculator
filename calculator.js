@@ -21,6 +21,27 @@ function Calculator(){
             return total;
         }
 
+        if(operators.length == numbers.length){
+            let firstOperator = operators.splice(0,1);
+            for(let i = 1; i < numbers.length; i++){
+            
+                if(isNaN(total)){
+                    a = +numbers[0];
+                    b = +numbers[i];
+                    op = operators[i-1]
+    
+                    total = this.methods[op](+`${firstOperator}${a}`,b);
+                } else {
+                    b = +numbers[i];
+                    op = operators[i-1];
+    
+                    total = this.methods[op](total,b);
+                }
+            }
+
+            return total;
+        }
+
         for(let i = 1; i < numbers.length; i++){
             
             if(isNaN(total)){
